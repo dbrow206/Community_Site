@@ -1,0 +1,67 @@
+body{
+    text-align: center;
+
+}
+nav ul{
+    display: flex;
+    list-style: none;
+    align-items: center;
+    background: black;
+    text-decoration: none;
+}
+nav ul li a{
+    width: 100px;
+    padding: 20px 10px;
+    display: block;
+    font-family: Arial;
+    color:white;
+}
+nav a {
+    float: left;
+    padding-left: 95px;
+    padding-right: 1000px;
+    background: black;
+}
+
+
+ul a{
+text-decoration: none;
+color: black;
+
+}
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: black;
+}
+
+footer p {
+color: white;
+list-style: none;
+padding-left:40px;
+float:left;
+word-spacing:20px;
+}
+
+label{
+display: block;
+}
+
+.centOut{
+    outline: solid 3px black;
+    background: #FF7F50
+}
+
+.left {
+outline: solid 3px black;
+float: left;
+width: 50%;
+background: #FF7F50
+  }
+.right {
+outline: solid 3px black;
+float: left;
+width: 50%;
+background: #8FBC8F
+}
