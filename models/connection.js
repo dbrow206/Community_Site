@@ -4,7 +4,7 @@ const {v4: uuidv4} = require('uuid');
 const connections = 
 [
 {
-    id:1,
+    id:'1',
     name:'Campus Clean up', 
     topic:'person',
     details:'This is a campus clean up',
@@ -12,10 +12,10 @@ const connections =
     startTime:'10:00AM' ,
     endTime:'1:00PM',
     hostName:"Charlotte Investment Club",
-    image:"url?"
+    image:"https://www.applesfromny.com/wp-content/uploads/2020/06/SnapdragonNEW.png"
 },
 {
-    id:2,
+    id:'2',
     name:'Dog walker', 
     topic:'person',
     details:'I need dog Walker',
@@ -23,10 +23,10 @@ const connections =
     startTime:'11:00AM' ,
     endTime:'1:00PM',
     hostName:"Prive entinity",
-    image:"url?"
+    image:"https://www.applesfromny.com/wp-content/uploads/2020/06/SnapdragonNEW.png"
 },
 {
-    id:3,
+    id:'3',
     name:'Save the watter Misson', 
     topic:'online',
     details:'We need to save the water',
@@ -34,7 +34,7 @@ const connections =
     startTime:'10:00AM' ,
     endTime:'2:00PM',
     hostName:"water misson",
-    image:"url?"
+    image:"https://www.applesfromny.com/wp-content/uploads/2020/06/SnapdragonNEW.png"
 }
 ];
 
@@ -54,8 +54,8 @@ exports.save = function (connection){
 exports.updateById = function(id, newConnection){
     let connection = connections.find(connection=>connection.id === id);
 if(connection){
-    connection.title = connection.title;
-    connection.content = connection.content;
+    connection.name = connection.name;
+    connection.details = connection.details;
     return true;
 }else{
     return false;
@@ -63,7 +63,7 @@ if(connection){
 }
 
 exports.deleteById = function(id){
-    let index = stories.findIndex(connection =>connection.id ===id);  
+    let index = connections.findIndex(connection =>connection.id ===id);  
     if(index !==-1){
         connections.splice(index, 1);
         return true;

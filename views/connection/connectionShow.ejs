@@ -1,0 +1,22 @@
+
+<%- include('../partials/header.ejs')%>
+
+
+    <h4> 
+        <%= connection.hostName %> 
+    </h4>
+    
+
+    <p>This event starts at <%= connection.startTime%> and ends <%= connection.endTime%> on <%= connection.date%> </p>
+    <p><%= connection.name %></p>
+    <p>Details: <br> <%= connection.details %> </p>
+    <img src="<%= connection.image %>" width="500" height="500">
+  
+    <form>
+        <button type = "submit" formmethod="GET" formaction="/connections/<%=connection.id%>/edit">Edit</button>
+        <button type = "submit" formmethod="POST" formaction="/connections/<%=connection.id%>?_method=DELETE">Delete</button>
+
+    </form>
+
+
+<%- include('../partials/footer.ejs')%>

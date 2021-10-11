@@ -1,0 +1,38 @@
+<%- include('../partials/header.ejs')%>
+
+
+<h1>Upcoming Events</h1>
+
+<div class="row">
+<div class="left">
+    <h2>In Person events</h2>
+    
+    <%if(connections.length) {%>
+        <p>Select a connection to view</p>
+        <%connections.forEach(connection=>{%>
+           <a href="/connections/<%= connection.id%>"> <p><%=connection.name%></p></a>
+
+        <%});
+    }else{%>
+        <p> There are no connections to display</p>
+    <%}%> 
+
+</div>
+<div class="right">
+    <h2>Online</h2>
+ 
+    <%if(connections.length) {%>
+        <p>Select a connection to view</p>
+        <%connections.forEach(connection=>{%>
+           <a href="/connections/<%= connection.id%>"> <p><%=connection.name%></p></a>
+
+        <%});
+    }else{%>
+        <p> There are no connections to display</p>
+    <%}%> 
+
+</div>
+</div>
+  </div>
+  
+  <%- include('../partials/footer.ejs')%>

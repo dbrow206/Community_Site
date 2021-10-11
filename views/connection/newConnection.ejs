@@ -1,4 +1,4 @@
-<%- include('./partials/header.ejs')%>
+<%- include('../partials/header.ejs')%>
 
 
   <h1>Commuity Service</h1>
@@ -20,11 +20,11 @@
     <label for="eventDesc">Event Description:</label>
     <textarea id="eventDesc" name="eventDesc" rows="4" cols="50">Please enter a small description about the event you are creating and what it actually involves.</textarea><br>
    
-    <label for="eventImage">Submit an image!:</label>
-    <input type="file" id="eventImage" name="eventImage" accept="image/*"><br>
+    <label for="eventImage">Submit an image URL:</label>
+    <input type="text" id="eventImage" name="eventImage"><br>
   
     <input type="submit">
 
   </form>
 </div>
-<%- include('./partials/footer.ejs')%>
+<%- include('../partials/footer.ejs')%>
