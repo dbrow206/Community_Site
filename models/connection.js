@@ -36,4 +36,38 @@ const connections =
     hostName:"water misson",
     image:"url?"
 }
-]
+];
+
+exports.find= function(){
+    return connections;
+}
+
+exports.findById = id => connections.find(connection=>connection.id === id);
+
+exports.save = function (connection){
+    connection.id = uuidv4();
+    connection.createdAt = DateTime.now().toLocaleString(DateTime.DATETIME_SHORT);
+    connections.push(connection);
+
+}
+
+exports.updateById = function(id, newConnection){
+    let connection = connections.find(connection=>connection.id === id);
+if(connection){
+    connection.title = connection.title;
+    connection.content = connection.content;
+    return true;
+}else{
+    return false;
+}
+}
+
+exports.deleteById = function(id){
+    let index = stories.findIndex(connection =>connection.id ===id);  
+    if(index !==-1){
+        connections.splice(index, 1);
+        return true;
+    }else{
+        return false;
+    }
+}
