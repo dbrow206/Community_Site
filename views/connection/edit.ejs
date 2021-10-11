@@ -1,19 +1,49 @@
 <%- include('../partials/header.ejs')%>
-<div class = "content">
-    <form method = "POST" action = "/stories/<%=story.id%>?_method=PUT">
+
+    <form method = "POST" action = "/connections/<%=connection.id%>?_method=PUT">
         <table>
+
             <tr>
-                <td><label for="title" >Title</label></td>
-                <td><input type="text" id="title" name="title" value = "<%= story.title%>" class = "fixed-width"></td>
+                <td><label for="name">Title</label></td>
+                <td><input type="text" id="name" name="name" value = "<%= connection.name%>"></td>
             </tr>
-            <tr><td class = "align-top"><label for="content">Content</label></td>
-                <td><textarea rows="5" id="content" name="content" class = "fixed-width"><%= story.content%></textarea></td>
-            </tr>
+
             <tr>
-                <td colspan="2" class = "align-right"><button>Submit</button></td>
+                <td><label for="details">Details</label></td>
+                <td><textarea rows="2" id="details" name="details"><%= connection.details%></textarea></td>
+            </tr>
+
+            <tr>
+                <td><label for="hostName">Host Name</label></td>
+                <td><textarea rows="2" id="hostName" name="hostName"><%= connection.hostName%></textarea></td>
+            </tr>
+
+            <tr>
+                <td><label for="date">Event Date</label></td>
+                <td><textarea rows="2" id="date" name="date"><%= connection.date%></textarea></td>
+            </tr>
+
+            <tr>
+                <td><label for="startTime">Start Time</label></td>
+                <td><textarea rows="2" id="startTime" name="startTime"><%= connection.startTime%></textarea></td>
+            </tr>
+
+            <tr>
+                <td><label for="endTime">End Time</label></td>
+                <td><textarea rows="2" id="endTime" name="endTime"><%= connection.endTime%></textarea></td>
+            </tr>
+
+            <tr>
+                <td><label for="image">Image URL</label></td>
+                <td><textarea rows="2" id="image" name="image"><%= connection.image%></textarea></td>
+            </tr>
+
+
+            <tr>
+                <td colspan="2" class = "align  -right"><button>Submit</button></td>
             </tr>
             </table>        
     </form>
 
-    </div>
     <%- include('../partials/footer.ejs')%>
+ 
