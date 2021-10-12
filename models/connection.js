@@ -5,36 +5,37 @@ const connections =
 [
 {
     id:'1',
-    name:'Campus Clean up', 
-    topic:'person',
+    name:'Campus Clean up',
     details:'This is a campus clean up',
     date:'2021/09/08', 
     startTime:'10:00AM' ,
     endTime:'1:00PM',
     hostName:"Charlotte Investment Club",
-    image:"https://www.applesfromny.com/wp-content/uploads/2020/06/SnapdragonNEW.png"
+    image:"https://www.applesfromny.com/wp-content/uploads/2020/06/SnapdragonNEW.png",
+    topic:'In-Person'
 },
 {
     id:'2',
     name:'Dog walker', 
-    topic:'person',
     details:'I need dog Walker',
     date:'2021/09/08', 
     startTime:'11:00AM' ,
     endTime:'1:00PM',
     hostName:"Prive entinity",
-    image:"https://www.applesfromny.com/wp-content/uploads/2020/06/SnapdragonNEW.png"
+    image:"https://www.applesfromny.com/wp-content/uploads/2020/06/SnapdragonNEW.png",
+    topic:'In-Person'
+    
 },
 {
     id:'3',
     name:'Save the watter Misson', 
-    topic:'online',
     details:'We need to save the water',
     date:'2021/09/08', 
     startTime:'10:00AM' ,
     endTime:'2:00PM',
     hostName:"water misson",
-    image:"https://www.applesfromny.com/wp-content/uploads/2020/06/SnapdragonNEW.png"
+    image:"https://www.applesfromny.com/wp-content/uploads/2020/06/SnapdragonNEW.png",
+    topic:'Online'
 }
 ];
 
@@ -60,7 +61,8 @@ exports.updateById = function(id, newConnection){
         connection.endTime = newConnection.endTime;
         connection.hostName = newConnection.hostName;
         connection.image = newConnection.image;
-        connection.id = newConnection.id;
+    
+
         return true;
     }else{
      return false;

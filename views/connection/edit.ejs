@@ -3,14 +3,14 @@
   <div class = "centOut"> 
     <form method = "POST" action = "/connections/<%=connection.id%>?_method=PUT">
 
+    <label for="topic">Topic:</label>
+    <input type="text" id="topic" name="topic" value = "<%= connection.topic%>">
+
     <label for="name">Event Name:</label>
     <input type="text" id="name" name="name" value = "<%= connection.name%>">
 
     <label for="hostName">Event Host:</label>
-    <input type="text" id="hostName" name="hostName" value = "<%= connection.hostName%>">
-
-    <label for="details">Event Details:</label>
-    <input type="text" id="details" name="details" value = "<%= connection.details%>">   
+    <input type="text" id="hostName" name="hostName" value = "<%= connection.hostName%>">  
     
     <label for="date">Event Date:</label>   
     <input type="date" id="date" name="date" value = "<%= connection.date%>">
@@ -27,7 +27,6 @@
     <label for="image">Submit an image URL:</label>
     <input type="text" id="image" name="image" value = "<%= connection.image%>" ><br>
    
-    <input type="hidden" id="id" name="id" value="<%= connection.id%>">
 
     <input type="submit">
 

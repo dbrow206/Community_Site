@@ -5,6 +5,7 @@ const router = express.Router();
 //GET /connections: Send all connections to the user
 router.get('/', controller.index);
 
+
 //GET /connections/new send html form for creating a new story
 router.get('/new', controller.new);
 

@@ -1,6 +1,5 @@
 body{
     text-align: center;
-
 }
 nav ul{
     display: flex;
@@ -50,18 +49,14 @@ display: block;
 
 .centOut{
     outline: solid 3px black;
-    background: #FF7F50
+    background:  #8FBC8F
 }
 
-.left {
+.orange {
 outline: solid 3px black;
-float: left;
-width: 50%;
 background: #FF7F50
   }
-.right {
+.green {
 outline: solid 3px black;
-float: left;
-width: 50%;
 background: #8FBC8F
 }
