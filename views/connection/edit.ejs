@@ -1,49 +1,36 @@
 <%- include('../partials/header.ejs')%>
-
+  <h1>Commuity Service</h1>
+  <div class = "centOut"> 
     <form method = "POST" action = "/connections/<%=connection.id%>?_method=PUT">
-        <table>
 
-            <tr>
-                <td><label for="name">Title</label></td>
-                <td><input type="text" id="name" name="name" value = "<%= connection.name%>"></td>
-            </tr>
+    <label for="name">Event Name:</label>
+    <input type="text" id="name" name="name" value = "<%= connection.name%>">
 
-            <tr>
-                <td><label for="details">Details</label></td>
-                <td><textarea rows="2" id="details" name="details"><%= connection.details%></textarea></td>
-            </tr>
+    <label for="hostName">Event Host:</label>
+    <input type="text" id="hostName" name="hostName" value = "<%= connection.hostName%>">
 
-            <tr>
-                <td><label for="hostName">Host Name</label></td>
-                <td><textarea rows="2" id="hostName" name="hostName"><%= connection.hostName%></textarea></td>
-            </tr>
+    <label for="details">Event Details:</label>
+    <input type="text" id="details" name="details" value = "<%= connection.details%>">   
+    
+    <label for="date">Event Date:</label>   
+    <input type="date" id="date" name="date" value = "<%= connection.date%>">
 
-            <tr>
-                <td><label for="date">Event Date</label></td>
-                <td><textarea rows="2" id="date" name="date"><%= connection.date%></textarea></td>
-            </tr>
+    <label for="startTime">Event Start Time:</label>
+    <input type="datetime" id="startTime" name="startTime"value = "<%= connection.startTime%>">
 
-            <tr>
-                <td><label for="startTime">Start Time</label></td>
-                <td><textarea rows="2" id="startTime" name="startTime"><%= connection.startTime%></textarea></td>
-            </tr>
+    <label for="endTime">Event End Time:</label>
+    <input type="datetime" id="endTime" name="endTime" value = "<%= connection.endTime%>">
 
-            <tr>
-                <td><label for="endTime">End Time</label></td>
-                <td><textarea rows="2" id="endTime" name="endTime"><%= connection.endTime%></textarea></td>
-            </tr>
+    <label for="details">Event Description:</label>
+    <textarea id="details" name="details" rows="4" cols="50"><%= connection.details%></textarea><br>
+   
+    <label for="image">Submit an image URL:</label>
+    <input type="text" id="image" name="image" value = "<%= connection.image%>" ><br>
+   
+    <input type="hidden" id="id" name="id" value="<%= connection.id%>">
 
-            <tr>
-                <td><label for="image">Image URL</label></td>
-                <td><textarea rows="2" id="image" name="image"><%= connection.image%></textarea></td>
-            </tr>
+    <input type="submit">
 
-
-            <tr>
-                <td colspan="2" class = "align  -right"><button>Submit</button></td>
-            </tr>
-            </table>        
-    </form>
-
-    <%- include('../partials/footer.ejs')%>
- 
+  </form>
+</div>
+<%- include('../partials/footer.ejs')%>

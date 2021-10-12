@@ -1,27 +1,32 @@
 <%- include('../partials/header.ejs')%>
 
-
   <h1>Commuity Service</h1>
-  <div class = "centOut">
-  <form>
+  <div class = "centOut"> 
+    <form action = '/connections' method = 'POST'>
 
-    <label for="eventName">Event Name:</label>
-    <input type="text" id="eventName" name="eventName">
+    <label for="name">Event Name:</label>
+    <input type="text" id="name" name="name">
 
-    <label for="eventHost">Event Host:</label>
-    <input type="text" id="eventHost" name="eventHost">
+    <label for="hostName">Event Host:</label>
+    <input type="text" id="hostName" name="hostName">
 
-    <label for="eventLoc">Event Location:</label>
-    <input type="text" id="eventLoc" name="eventLoc">   
+    <label for="details">Event Details:</label>
+    <input type="text" id="details" name="details">   
     
-    <label for="eventDate">Event Date:</label>
-    <input type="date" id="eventDate" name="eventDate">
+    <label for="date">Event Date:</label>
+    <input type="date" id="date" name="date">
+
+    <label for="startTime">Event Start Time:</label>
+    <input type="datetime" id="startTime" name="startTime">
+
+    <label for="endTime">Event End Time:</label>
+    <input type="datetime" id="endTime" name="endTime">
 
     <label for="eventDesc">Event Description:</label>
     <textarea id="eventDesc" name="eventDesc" rows="4" cols="50">Please enter a small description about the event you are creating and what it actually involves.</textarea><br>
    
-    <label for="eventImage">Submit an image URL:</label>
-    <input type="text" id="eventImage" name="eventImage"><br>
+    <label for="image">Submit an image URL:</label>
+    <input type="text" id="image" name="image"><br>
   
     <input type="submit">
 

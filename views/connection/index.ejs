@@ -21,16 +21,6 @@
 <div class="right">
     <h2>Online</h2>
  
-    <%if(connections.length) {%>
-        <p>Select a connection to view</p>
-        <%connections.forEach(connection=>{%>
-           <a href="/connections/<%= connection.id%>"> <p><%=connection.name%></p></a>
-
-        <%});
-    }else{%>
-        <p> There are no connections to display</p>
-    <%}%> 
-
 </div>
 </div>
   </div>

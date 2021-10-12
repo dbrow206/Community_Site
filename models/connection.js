@@ -8,7 +8,7 @@ const connections =
     name:'Campus Clean up', 
     topic:'person',
     details:'This is a campus clean up',
-    date:'10/09/2021', 
+    date:'2021/09/08', 
     startTime:'10:00AM' ,
     endTime:'1:00PM',
     hostName:"Charlotte Investment Club",
@@ -19,7 +19,7 @@ const connections =
     name:'Dog walker', 
     topic:'person',
     details:'I need dog Walker',
-    date:'10/15/2021', 
+    date:'2021/09/08', 
     startTime:'11:00AM' ,
     endTime:'1:00PM',
     hostName:"Prive entinity",
@@ -30,7 +30,7 @@ const connections =
     name:'Save the watter Misson', 
     topic:'online',
     details:'We need to save the water',
-    date:'10/21/2021', 
+    date:'2021/09/08', 
     startTime:'10:00AM' ,
     endTime:'2:00PM',
     hostName:"water misson",
@@ -46,20 +46,25 @@ exports.findById = id => connections.find(connection=>connection.id === id);
 
 exports.save = function (connection){
     connection.id = uuidv4();
-    connection.createdAt = DateTime.now().toLocaleString(DateTime.DATETIME_SHORT);
     connections.push(connection);
 
 }
 
 exports.updateById = function(id, newConnection){
     let connection = connections.find(connection=>connection.id === id);
-if(connection){
-    connection.name = connection.name;
-    connection.details = connection.details;
-    return true;
-}else{
-    return false;
-}
+    if(connection){
+        connection.name = newConnection.name;
+        connection.topic = newConnection.topic;
+        connection.details = newConnection.details;
+        connection.startTime = newConnection.startTime;
+        connection.endTime = newConnection.endTime;
+        connection.hostName = newConnection.hostName;
+        connection.image = newConnection.image;
+        connection.id = newConnection.id;
+        return true;
+    }else{
+     return false;
+    }
 }
 
 exports.deleteById = function(id){

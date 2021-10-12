@@ -10,7 +10,6 @@ exports.new=(req, res) => {
 };
 
 exports.create=(req, res)=> {
-    //res.send('Created a new connection');
    let connection = req.body;
    model.save(connection);
    res.redirect('/connections');
