@@ -1,8 +1,11 @@
 const model = require('../models/connection');  
 
-exports.index=(req, res)=>{
+exports.index=(req, res)=>{ 
    let connections = model.find();
-   res.render('./connection/index', {connections});
+   let topics = model.getTopics();
+   console.log(topics);
+   res.render('./connection/index', {connections:connections , topics:topics});
+   
 };
 
 exports.new=(req, res) => {
@@ -58,12 +61,11 @@ exports.update=(req, res, next) => {
 exports.delete=(req, res, next) => {
     let id = req.params.id;
     if(model.deleteById(id)){
-        res.redirect('/connections')
+        res.redirect('/connections');
     }else{
         let err = new Error('Cannot find a connection with id ' + id);
         err.status = 404;
         next(err);
     }
-
 };
 

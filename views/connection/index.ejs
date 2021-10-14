@@ -1,18 +1,25 @@
 <%- include('../partials/header.ejs')%>
 
 <h1>Upcoming Events</h1>
-<div class="row">
-    <%if(connections.length) {%>
-        <p>Select a connection to view</p>
-        <%connections.forEach(connection=>{%>  
-        <div class = orange>
-            <h3><%=connection.topic%></h3>           
-            <a href="/connections/<%= connection.id%>"> <p><%=connection.name%></p></a>    
-        </div>                       
-        <%});
-    }else{%>
+
+
+    <%if(topics.length) {%>
+        <%topics.forEach(topic=>{%>  
+        <div class =green>
+        <h3><%=topic%></h3> 
+        </div>                                        
+        <%connections.forEach(connection=>{%> 
+            <%if(connection.topic==topic){%> 
+                <div class = orange>         
+            <a href="/connections/<%= connection.id%>"><p><%=connection.name%></p></a> 
+        </div>  
+             <%}%>                    
+      
+             <%});%>  
+             <%});%>
+   <%}else{%>
         <p> There are no connections to display</p>
     <%}%> 
-  </div>
+  
   <%- include('../partials/footer.ejs')%>
 

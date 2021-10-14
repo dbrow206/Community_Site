@@ -2,6 +2,7 @@
 const express = require('express');
 const morgan = require('morgan');
 const methodOverride = require("method-override");
+const lodash = require("lodash");
 const connectionRoutes = require("./routes/connectionRoutes");
 
 //Create the app
@@ -51,6 +52,8 @@ app.use((err, req, res, next)=>{
     res.render('error', {error:err});
     
 });
+
+
 
 //Start the server
 app.listen(port, host, () =>{
