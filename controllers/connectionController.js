@@ -1,71 +1,112 @@
 const model = require('../models/connection');  
 
 exports.index=(req, res)=>{ 
-   let connections = model.find();
-   let topics = model.getTopics();
-   console.log(topics);
-   res.render('./connection/index', {connections:connections , topics:topics});
-   
-};
+    model.find()
+    .then(connections=> res.render('./connection/index', {connections}))
+    .catch(err=>next(err));
+      
+    };
 
 exports.new=(req, res) => {
     res.render('./connection/newConnection');
 };
 
 exports.create=(req, res)=> {
-   let connection = req.body;
-   model.save(connection);
-   res.redirect('/connections');
-
+    let connection = new model(req.body);
+    connection.save()
+   .then(connection=> res.redirect('/connections'))
+   .catch(err=>{
+       if(err.name = 'ValidationError'){ 
+           err.status = 400;
+       }
+       next(err);
+   });
 };
 
 exports.show=(req, res, next)=>{
     let id = req.params.id;
-    let connection = model.findById(id);
-    if(connection){
-        res.render('./connection/connectionShow', {connection});
-    }else{
-        let err = new Error('Cannot find a connection with id ' + id);
-        err.status = 404;
-        next(err);
+    if(!id.match(/^[0-9a-fA-F]{24}$/)){
+        let err = new Error('Invalid connection id');
+        err.status = 400;
+        return next(err);
     }
-   
+    model.findById(id)
+    .then(connection=>{
+        if(connection){
+            return res.render('./connection/connectionShow', {story});
+        }else{
+            let err = new Error('Cannot find a connection with id ' + id);
+            err.status = 404;
+            next(err);
+        }
+    })
+    .catch(err=>next(err));
 };
 
 exports.edit=(req, res, next) => {
     let id = req.params.id;
-    let connection = model.findById(id);
-    if(connection){
-        res.render('./connection/edit', {connection});
-    }else{
-        let err = new Error('Cannot find a connection with id ' + id);
-        err.status = 404;
-        next(err);
-}
-
+    if(!id.match(/^[0-9a-fA-F]{24}$/)){
+        let err = new Error('Invalid connection id');
+        err.status = 400;
+        return next(err);
+    }
+    model.findById(id)
+    .then(connection=>{
+        if(connection){
+            return res.render('./connection/edit', {connection});
+        }else{
+            let err = new Error('Cannot find a connection with id ' + id);
+            err.status = 404;
+            next(err);
+        }
+    })
+    .catch(err=>next(err));
 };
 
 exports.update=(req, res, next) => {
     let connection = req.body;
     let id = req.params.id;
+    if(!id.match(/^[0-9a-fA-F]{24}$/)){
+        let err = new Error('Invalid connection id');
+        err.status = 400;
+        return next(err);
+    }
     
-    if(model.updateById(id, connection)){
-        res.redirect('/connections/'+id);
-    }else{
-        let err = new Error('Cannot find a connection with id ' + id);
-        err.status = 404;
+    model.findByIdAndUpdate(id, story, {useFindAndModify: false, runValidators: true} )
+    .then(connection=>{
+        if(connection){
+            res.redirect('/connections/'+id);
+        }else{
+            let err = new Error('Cannot find a connection with id ' + id);
+            err.status = 404;
+            next(err);
+        }
+    })
+    .catch(err=>{
+        if(err.name === 'ValidationError')
+            err.status=400;
         next(err);
-    }
-};
+    });  
+    };
 
-exports.delete=(req, res, next) => {
-    let id = req.params.id;
-    if(model.deleteById(id)){
-        res.redirect('/connections');
-    }else{
-        let err = new Error('Cannot find a connection with id ' + id);
-        err.status = 404;
-        next(err);
-    }
-};
+    exports.delete=(req, res, next) => {
+        let id = req.params.id;
+        if(!id.match(/^[0-9a-fA-F]{24}$/)){
+            let err = new Error('Invalid connection id');
+            err.status = 400;
+            return next(err);
+        }
+        model.findByIdAndDelete(id, {useFindAndModify: false})
+        .then(stconnectionory =>{
+            if(connection){
+                res.redirect('/connections')
+            }else{
+                let err = new Error('Cannot find a connection with id ' + id);
+                err.status = 404;
+                next(err); 
+            }
+        })
+        .catch(err=>next(err));
+    };
+    
 
