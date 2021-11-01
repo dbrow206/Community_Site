@@ -14,6 +14,7 @@ const connectionSchema = new Schema({
 {timestamps: true}
 );
 
+
 //Collection name will be stories in the db
 module.exports = mongoose.model('Connection', connectionSchema);
 

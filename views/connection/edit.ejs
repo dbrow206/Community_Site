@@ -1,8 +1,7 @@
 <%- include('../partials/header.ejs')%>
   <h1>Commuity Service</h1>
   <div class = "centOut"> 
-    <form method = "POST" action = "/connections/<%=connection.id%>?_method=PUT">
-
+    <form method = "POST" action = "/connections/<%=connection._id%>?_method=PUT">
     <label for="topic">Topic:</label>
     <input type="text" id="topic" name="topic" value = "<%= connection.topic%>">
 

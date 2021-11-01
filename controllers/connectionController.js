@@ -33,7 +33,7 @@ exports.show=(req, res, next)=>{
     model.findById(id)
     .then(connection=>{
         if(connection){
-            return res.render('./connection/connectionShow', {story});
+            return res.render('./connection/connectionShow', {connection});
         }else{
             let err = new Error('Cannot find a connection with id ' + id);
             err.status = 404;
@@ -72,7 +72,7 @@ exports.update=(req, res, next) => {
         return next(err);
     }
     
-    model.findByIdAndUpdate(id, story, {useFindAndModify: false, runValidators: true} )
+    model.findByIdAndUpdate(id, connection, {useFindAndModify: false, runValidators: true} )
     .then(connection=>{
         if(connection){
             res.redirect('/connections/'+id);

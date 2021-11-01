@@ -3,19 +3,14 @@
 <h1>Upcoming Events</h1>
 
 
-    <%if(topics.length) {%>
-        <%topics.forEach(topic=>{%>  
-        <div class =green>
-        <h3><%=topic%></h3> 
-        </div>                                        
-        <%connections.forEach(connection=>{%> 
-            <%if(connection.topic==topic){%> 
+    <%if(connections.length) {%>
+                                           
+        <%connections.forEach(connection=>{%>  
                 <div class = orange>         
             <a href="/connections/<%= connection.id%>"><p><%=connection.name%></p></a> 
         </div>  
-             <%}%>                    
-      
-             <%});%>  
+                           
+    
              <%});%>
    <%}else{%>
         <p> There are no connections to display</p>
