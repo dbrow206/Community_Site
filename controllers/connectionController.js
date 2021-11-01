@@ -97,7 +97,7 @@ exports.update=(req, res, next) => {
             return next(err);
         }
         model.findByIdAndDelete(id, {useFindAndModify: false})
-        .then(stconnectionory =>{
+        .then(connection =>{
             if(connection){
                 res.redirect('/connections')
             }else{
