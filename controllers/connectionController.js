@@ -11,7 +11,7 @@ exports.new=(req, res) => {
     res.render('./connection/newConnection');
 };
 
-exports.create=(req, res)=> {
+exports.create=(req, res, next)=> {
     let connection = new model(req.body);
     connection.save()
    .then(connection=> res.redirect('/connections'))

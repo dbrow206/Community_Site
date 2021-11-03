@@ -5,28 +5,28 @@
     <form action = '/connections' method = 'POST'>
 
     <label for="topic">Topic:</label>
-    <input type="text" id="topic" name="topic">
+    <input type="text" id="topic" name="topic" required>
 
     <label for="name">Event Name:</label>
-    <input type="text" id="name" name="name">
+    <input type="text" id="name" name="name" required>
 
     <label for="hostName">Event Host:</label>
-    <input type="text" id="hostName" name="hostName"> 
+    <input type="text" id="hostName" name="hostName" required> 
     
     <label for="date">Event Date:</label>
-    <input type="date" id="date" name="date">
+    <input type="date" id="date" name="date" required>
 
     <label for="startTime">Event Start Time:</label>
-    <input type="datetime" id="startTime" name="startTime">
+    <input type="datetime" id="startTime" name="startTime" required>
 
     <label for="endTime">Event End Time:</label>
-    <input type="datetime" id="endTime" name="endTime">
+    <input type="datetime" id="endTime" name="endTime" required>
 
     <label for="details">Event Description:</label>
-    <textarea id="details" name="details" rows="4" cols="50">Please enter a small description about the event you are creating and what it actually involves.</textarea><br>
+    <textarea id="details" name="details" rows="4" cols="50" required>Please enter a small description about the event you are creating and what it actually involves.</textarea><br>
    
     <label for="image">Submit an image URL:</label>
-    <input type="text" id="image" name="image"><br>
+    <input type="text" id="image" name="image" required><br>
   
     <input type="submit">
 

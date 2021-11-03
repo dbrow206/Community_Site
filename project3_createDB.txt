@@ -1,6 +1,7 @@
 db.createCollection("connections")
 
-db.connection.insert({
+db.connections.insertMany([
+{
     name:'Campus Clean up',
     details:'Volunteer as an individual or bring a group. This is a great way to give back to your UNC Charlotte community, gain service hours or get some exercise walking around campus. Snacks will be provided for volunteers, as well as gloves, bags and litter sticks to get the job done.',
     date:'2021/09/08', 
@@ -9,9 +10,9 @@ db.connection.insert({
     hostName:"Charlotte Investment Club",
     image:"https://localist-images.azureedge.net/photos/31500585125210/huge/e71316296fb95c4c059972487eca368addef5688.jpg",
     topic:'In-Person'
-});
+},
 
-db.connection.insert({ 
+{ 
     name:'Dog walker', 
     details:'I am looking for someone to walk my dogs. This will take approximately 2 hours and I am located in the charlotte area.',
     date:'2021/09/08', 
@@ -20,9 +21,9 @@ db.connection.insert({
     hostName:"Privite entinity",
     image:"https://dailygazette.com/wp-content/uploads/2019/05/190521b.jpg",
     topic:'In-Person'
-});
+},
 
-db.connection.insert({ 
+{ 
     name:'Save the water Misson', 
     details:'During the save the water misson community service event we will be talking about different ways you can help save the water in your community',
     date:'06no/09/2008', 
@@ -31,9 +32,9 @@ db.connection.insert({
     hostName:"water misson",
     image:"https://image.slidesharecdn.com/watermission-140727074159-phpapp02/95/water-mission-1-638.jpg?cb=1406446968",
     topic:'Online'
-});
+},
 
-db.connection.insert({ 
+{ 
     name:'Habitat event', 
     details:'By volunteering with your local Habitat for Humanity, you can be a part of the change you want to see in your community. We offer several opportunities to build or repair homes with families, in addition to volunteer work opportunities at your local Habitat ReStore. You can even invite your friends and family to join us.',
     date:'2021/10/08', 
@@ -42,9 +43,9 @@ db.connection.insert({
     hostName:"Habitat For Hummanity",
     image:"https://www.hypcharlotte.org/wp-content/files/sites/6/2020/07/logo-hyp-black.png",
     topic:'In-Person'
-});
+},
 
-db.connection.insert({ 
+{ 
     name:'POL - Multiple opportunities', 
     details:'Offering a variety of volunteer opportunities is one way to ensure that employees or community members find at least one thing in which they’d feel comfortable participating. Has your organization thought about incorporating virtual activities for your remote staff or supporters?',
     date:'09/09/2008', 
@@ -53,9 +54,9 @@ db.connection.insert({
     hostName:"Points of light",
     image:"https://www.pointsoflight.org/wp-content/themes/points-of-light/assets/img/POL_Logo.png",
     topic:'Online'
-});
+},
 
-db.connection.insert({ 
+{ 
     name:'Drawing', 
     details:'Color A Smile is a nonprofit organization that distributes cheerful drawings to Senior Citizens, Our Troops Overseas, and anyone in need of a smile. Every month we mail thousands of new drawings to all the people on our mailing list.',
     date:'2021/09/08', 
@@ -68,4 +69,4 @@ db.connection.insert({
 
 
 
-});
+}]);

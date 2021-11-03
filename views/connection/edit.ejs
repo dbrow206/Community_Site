@@ -3,28 +3,28 @@
   <div class = "centOut"> 
     <form method = "POST" action = "/connections/<%=connection._id%>?_method=PUT">
     <label for="topic">Topic:</label>
-    <input type="text" id="topic" name="topic" value = "<%= connection.topic%>">
+    <input type="text" id="topic" name="topic" value = "<%= connection.topic%>" required>
 
     <label for="name">Event Name:</label>
-    <input type="text" id="name" name="name" value = "<%= connection.name%>">
+    <input type="text" id="name" name="name" value = "<%= connection.name%>" required>
 
     <label for="hostName">Event Host:</label>
-    <input type="text" id="hostName" name="hostName" value = "<%= connection.hostName%>">  
+    <input type="text" id="hostName" name="hostName" value = "<%= connection.hostName%>" required>  
     
     <label for="date">Event Date:</label>   
-    <input type="date" id="date" name="date" value = "<%= connection.date%>">
+    <input type="date" id="date" name="date" value = "<%= connection.date%>" required>
 
     <label for="startTime">Event Start Time:</label>
-    <input type="datetime" id="startTime" name="startTime"value = "<%= connection.startTime%>">
+    <input type="datetime" id="startTime" name="startTime"value = "<%= connection.startTime%>" required>
 
     <label for="endTime">Event End Time:</label>
-    <input type="datetime" id="endTime" name="endTime" value = "<%= connection.endTime%>">
+    <input type="datetime" id="endTime" name="endTime" value = "<%= connection.endTime%>" required>
 
     <label for="details">Event Description:</label>
-    <textarea id="details" name="details" rows="4" cols="50"><%= connection.details%></textarea><br>
+    <textarea id="details" name="details" rows="4" cols="50" required><%= connection.details%></textarea><br>
    
     <label for="image">Submit an image URL:</label>
-    <input type="text" id="image" name="image" value = "<%= connection.image%>" ><br>
+    <input type="text" id="image" name="image" value = "<%= connection.image%>" required><br>
    
 
     <input type="submit">
