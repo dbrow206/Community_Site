@@ -16,7 +16,7 @@ exports.new=(req, res) => {
 
 exports.create = (req, res, next)=>{
     let connection = new model(req.body);
-    connection.hostName = req.session.user;
+    connection.author = req.session.user;
     connection.save()
     .then(connection=> res.redirect('/connections'))
     .catch(err=>{
@@ -30,7 +30,7 @@ exports.create = (req, res, next)=>{
 
 exports.show = (req, res, next)=>{
     let id = req.params.id;
-    model.findById(id).populate('hostName', 'firstName lastName')
+    model.findById(id).populate('author', 'firstName lastName')
     .then(connection=>{
         if(connection) {    
             console.log(connection);      

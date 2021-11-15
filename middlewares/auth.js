@@ -24,13 +24,13 @@ exports.isLoggedIn = (req, res, next)=>{
 };
 
 
-//check if user is hostName
+//check if user is 
 exports.isAuthor = (req, res, next)=>{
    let id = req.params.id;
    connection.findById(id)
    .then(connection=>{
         if(connection){
-            if(connection.hostName == req.session.user){
+            if(connection.author == req.session.user){
                 return next();
             }else{
                 let err = new Error('Unauthroized to access the resource');

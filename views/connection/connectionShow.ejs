@@ -6,7 +6,7 @@
     </h2>
 
     <h4> 
-       Hosted By: <%= connection.hostName %> 
+       Hosted By: <%= connection.author.firstName + ' ' + connection.author.lastName %>
     </h4>
     
 
@@ -17,12 +17,12 @@
     <img src="<%= connection.image %>" width="250" height="250">
     <p>Details: <br> <%= connection.details %> </p>
   
-  
+    <% if(user == connection.author._id){ %>
     <form>
         <button type = "submit" formmethod="GET" formaction="/connections/<%=connection.id%>/edit">Edit</button>
         <button type = "submit" formmethod="POST" formaction="/connections/<%=connection.id%>?_method=DELETE">Delete</button>
-
     </form>
+    <%}%>
 </div>
 
 <%- include('../partials/footer.ejs')%>
