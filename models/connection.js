@@ -14,7 +14,17 @@ const connectionSchema = new Schema({
 {timestamps: true}
 );
 
-
+connectionSchema.statics.getTopics = (connecctions) => {
+    topics = [];
+        for(i=0; i< connecctions.length;i++){
+        if(!topics.includes(connecctions[i].topic)){
+            topics.push(connecctions[i].topic);
+            }
+        }
+        return topics;
+}
 //Collection name will be stories in the db
 module.exports = mongoose.model('Connection', connectionSchema);
+
+
 

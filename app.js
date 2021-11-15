@@ -1,6 +1,8 @@
 //Require needed modules 
 const express = require('express');
 const morgan = require('morgan');
+const session = require('express-session');
+const flash = require('connect-flash');
 const methodOverride = require("method-override");
 const mongoose = require('mongoose');
 const connectionRoutes = require("./routes/connectionRoutes");
@@ -24,6 +26,25 @@ mongoose.connect('mongodb://localhost:27017/demos', {useNewUrlParser: true, useU
 .catch(err=>console.log(err.message));
 
 //Middleware
+
+app.use(
+    session({
+        secret: "ajhyirfdfaeu9eroejtje8j",
+        resave: false,
+        saveUninitialized: false,
+        store: new MongoStore({mongoUrl: 'mongodb://localhost:27017/demos'}),
+        cookie: {maxAge: 60*60*1000}
+        })
+);
+app.use(flash());
+
+app.use((req, res, next) => {
+    res.locals.user = req.session.user||null;
+    res.locals.errorMessages = req.flash('error');
+    res.locals.successMessages = req.flash('success');
+    next();
+});
+
 app.use(express.static('public'));
 app.use(express.urlencoded({extended: true}));
 app.use(morgan('tiny'));
