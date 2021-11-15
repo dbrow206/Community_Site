@@ -6,7 +6,7 @@
     <%if(connections.length){%>
         <p>You have created the following connections</p>
         <%connections.forEach(connection =>{ %>
-            <a href = '/connections/<%=connection.id%>'><p><%=connection.title%></p></a>
+            <a href = '/connections/<%=connection.id%>'><p><%=connection.name%></p></a>
         <%});
     }else{%>
         <p>You have not created any connections</p>

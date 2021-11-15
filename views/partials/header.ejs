@@ -5,15 +5,45 @@
         <link rel="stylesheet" href="/css/style.css">
         <meta charset="utf-8"/>
     </head>
+
 <body>
     
     <nav>
         <a href = "/"><img src = "/css/images/SiteLogo.png" width="175" height="72" alt="Site Logo"/></a>
         <ul>
-            <li><a href="/connections/new">Create an Event</a></li> 
-            <li><a href="/connections"> Events</a></li>
-            <li><a href="/"> Login</a></li>
-            <li><a href="/"> Sign Up</a></li>
+            <li><a href='/'>Home</a></li>
+            <li><a href='/connections'>Connections</a></li>
+            <li><a href='/connections/new'>Create a New Connection</a></li>
 
+       <% if(!user){%>
+
+           <li><a href='/users/new'>Sign Up</a></li>
+           <li><a href='/users/login'>Login</a></li>
+
+        <%}else {%>
+
+            <li><a href='/users/profile'>Profile</a></li>
+            <li><a href='/users/logout'>Logout</a></li>
+            
+       <%}%>
+     
         </ul>
     </nav>
+
+
+    <% if(errorMessages.length > 0) {%>
+        <% errorMessages.forEach(message=>{%>
+            <div class='error'>
+                <%=message%>
+            </div>
+            <%});%>
+                <%}%>
+    
+                    <% if(successMessages.length > 0) {%>
+    
+                        <% successMessages.forEach(message=>{%>
+                            <div class='success'>
+                                <%=message%>
+                            </div>
+                            <%});%>
+                                <%}%>

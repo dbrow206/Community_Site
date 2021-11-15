@@ -7,6 +7,7 @@ const methodOverride = require("method-override");
 const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo');
 const connectionRoutes = require("./routes/connectionRoutes");
+const userRoutes = require('./routes/userRoutes');
 
 //Create the app
 const app = express();
@@ -30,7 +31,7 @@ mongoose.connect('mongodb://localhost:27017/demos', {useNewUrlParser: true, useU
 
 app.use(
     session({
-        secret: "ajhyirfdfaeu9eroejtje8j",
+        secret: "ajfeirf90aeu9eroejfoefj",
         resave: false,
         saveUninitialized: false,
         store: new MongoStore({mongoUrl: 'mongodb://localhost:27017/demos'}),
@@ -65,6 +66,8 @@ app.get('/contact', (req,res)=>{
 });
 
 app.use('/connections', connectionRoutes);
+
+app.use('/users', userRoutes);
 
 app.use((req, res, next)=>{
     let err = new Error('The server cannot locate ' + req.url);
