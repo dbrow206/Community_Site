@@ -5,8 +5,11 @@
         <%= connection.name%>
     </h2>
 
+    <h3>
+        Hosted by: <%= connection.hostName%>
+    </h3>
     <h4> 
-       Hosted By: <%= connection.author.firstName + ' ' + connection.author.lastName %>
+       Created By: <%= connection.author.firstName + ' ' + connection.author.lastName %>
     </h4>
     
 
@@ -22,6 +25,9 @@
         <button type = "submit" formmethod="GET" formaction="/connections/<%=connection.id%>/edit">Edit</button>
         <button type = "submit" formmethod="POST" formaction="/connections/<%=connection.id%>?_method=DELETE">Delete</button>
     </form>
+        <h3>RSVP</h3>
+        <button type = "submit" formmethod="POST">YES</button>
+        <button type = "submit" formmethod="POST">NO</button>
     <%}%>
 </div>
 

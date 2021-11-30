@@ -33,7 +33,7 @@ exports.show = (req, res, next)=>{
     model.findById(id).populate('author', 'firstName lastName')
     .then(connection=>{
         if(connection) {    
-            console.log(connection);      
+            (connection);      
             return res.render('./connection/connectionShow', {connection});
         } else {
             let err = new Error('Cannot find a connection with id ' + id);
@@ -51,7 +51,7 @@ exports.edit = (req, res, next)=>{
     model.findById(id)
     .then(connection=>{
         if(connection) {
-            return res.render('./connection/edit', {stconnectionory});
+            return res.render('./connection/edit', {connection});
         } else {
             let err = new Error('Cannot find a connection with id ' + id);
             err.status = 404;
