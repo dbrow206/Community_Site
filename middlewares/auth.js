@@ -24,7 +24,7 @@ exports.isLoggedIn = (req, res, next)=>{
 };
 
 
-//check if user is 
+//check if user is author
 exports.isAuthor = (req, res, next)=>{
    let id = req.params.id;
    connection.findById(id)
@@ -41,3 +41,22 @@ exports.isAuthor = (req, res, next)=>{
    })
    .catch(err=>next(err));
 };
+
+//check if user is not author 
+exports.isNotAuthor = (req, res, next)=>{
+    let id = req.params.id;
+    connection.findById(id)
+    .then(connection=>{
+         if(connection){
+             if(connection.author != req.session.user){
+                 console.log('isNotAuthor');
+                 return next();
+             }else{
+                 let err = new Error('Unauthroized to access the resource');
+                 err.status = 401;
+                 return next(err);
+             }
+         }
+    })
+    .catch(err=>next(err));
+ };

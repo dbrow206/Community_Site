@@ -15,11 +15,11 @@ const connectionSchema = new Schema({
 {timestamps: true}
 );
 
-connectionSchema.statics.getTopics = (connecctions) => {
+connectionSchema.statics.getTopics = (connections) => {
     topics = [];
-        for(i=0; i< connecctions.length;i++){
-        if(!topics.includes(connecctions[i].topic)){
-            topics.push(connecctions[i].topic);
+        for(i=0; i< connections.length;i++){
+        if(!topics.includes(connections[i].topic)){
+            topics.push(connections[i].topic);
             }
         }
         return topics;

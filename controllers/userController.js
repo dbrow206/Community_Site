@@ -1,5 +1,6 @@
 const model = require('../models/user');
 const Connection = require('../models/connection');
+const rsvpModel = require('../models/rsvp');
 
 exports.new = (req, res)=>{
       return res.render('./user/new');
@@ -59,10 +60,11 @@ exports.login = (req, res, next)=>{
 
 exports.profile = (req, res, next)=>{
     let id = req.session.user;
-    Promise.all([model.findById(id), Connection.find({author: id})]) 
+    Promise.all([model.findById(id), Connection.find({author: id}), rsvpModel.find({user:id}).populate('connection')]) 
     .then(results=>{
-        const [user, connections] = results;
-        res.render('./user/profile', {user, connections})
+        const [user, connections, rsvps] = results;
+        console.log(rsvps);
+        res.render('./user/profile', {user, connections, rsvps})
     })
     .catch(err=>next(err));
 };

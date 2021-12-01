@@ -9,6 +9,7 @@ const MongoStore = require('connect-mongo');
 const connectionRoutes = require("./routes/connectionRoutes");
 const userRoutes = require('./routes/userRoutes');
 
+
 //Create the app
 const app = express();
 
@@ -66,8 +67,8 @@ app.get('/contact', (req,res)=>{
 });
 
 app.use('/connections', connectionRoutes);
-
 app.use('/users', userRoutes);
+
 
 app.use((req, res, next)=>{
     let err = new Error('The server cannot locate ' + req.url);

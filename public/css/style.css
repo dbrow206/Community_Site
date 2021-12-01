@@ -1,6 +1,11 @@
 body{
     text-align: center;
 }
+table{
+    text-align: center;
+    padding-left: 850px;
+   
+}
 nav ul{
     display: flex;
     list-style: none;
@@ -49,14 +54,17 @@ display: block;
 
 .centOut{
     outline: solid 3px black;
-    background:  #8FBC8F
+    background:  #8FBC8F;
 }
 
 .orange {
-outline: solid 3px black;
-background: #FF7F50
+    outline: solid 3px black;
+    background: #FF7F50;
+    text-align: center;
+
+
   }
 .green {
 outline: solid 3px black;
-background: #8FBC8F
+background: #8FBC8F;
 }

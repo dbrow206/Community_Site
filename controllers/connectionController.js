@@ -1,5 +1,6 @@
 const model = require('../models/connection');  
-
+const rsvp = require('../models/rsvp');
+const rsvpModel = require('../models/rsvp');
 exports.index=(req, res, next)=>{ 
     model.find()
     .then(connections=> {
@@ -30,11 +31,12 @@ exports.create = (req, res, next)=>{
 
 exports.show = (req, res, next)=>{
     let id = req.params.id;
-    model.findById(id).populate('author', 'firstName lastName')
-    .then(connection=>{
-        if(connection) {    
-            (connection);      
-            return res.render('./connection/connectionShow', {connection});
+    let user= model.findById(id).populate('author', 'firstName lastName')
+    Promise.all([model.findById(id), rsvpModel.count({connection: id, rsvp:'YES'})])
+    .then(results=>{
+        const [connection, rsvps] = results;
+        if(connection) {         
+            return res.render('./connection/connectionShow', {connection, user, rsvps});
         } else {
             let err = new Error('Cannot find a connection with id ' + id);
             err.status = 404;
@@ -100,4 +102,55 @@ exports.delete = (req, res, next)=>{
     .catch(err=>next(err));
 };
     
+exports.editRsvp = (req, res, next)=>{
+    console.log(req.body.rsvp);
+    let id = req.params.id;
+    rsvpModel.findOne({connection:id}).then(rsvp=>{
+        if(rsvp){
+            //Update
+            rsvpModel.findByIdAndUpdate(rsvp._id, {rsvp:req.body.rsvp}, {useFindAndModify: false, runValidators: true})
+            .then(rsvp=>{
+                req.flash('success', 'Successfully updated RSVP');
+                res.redirect('/users/profile');
+            })
+            .catch(err=>{
+                console.log(err);
+                if(err.name === 'ValidationError'){
+                    req.flash('error', err.message);
+                    return res.redirect('/back');
+                }
+                next(err);
+            });
+        }
+        else{
+            //create
+            let rsvp = new rsvpModel({
+                connection: id,
+                rsvp: req.body.rsvp,
+                user: req.session.user
+        });
+        rsvp.save()
+        .then(rsvp=>{
+            req.flash('success', 'Successfully Created RSVP');
+            res.redirect("/users/profile")
+        })
+        .catch(err=>{
+            req.flash('error', err.message);
+            next(err);
+        });
+        }
+    })
+}
 
+exports.deleteRsvp = (req, res, next) => {
+    let id = req.params.id;
+    rsvpModel.findOneAndDelete({connection: id, user: req.session.user})
+    .then(rsvp => {
+        req.flash("sucess", "Successfully deleted RSVP");
+        res.redirect('/users/profile');
+    })
+    .catch(err=>{
+        req.flash('error', err.message);
+        next(err)
+    });
+}
