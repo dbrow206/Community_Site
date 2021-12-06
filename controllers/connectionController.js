@@ -87,9 +87,9 @@ exports.update = (req, res, next)=>{
 
     
 exports.delete = (req, res, next)=>{
+    let user = req.session.user;
     let id = req.params.id;
-
-    model.findByIdAndDelete(id, {useFindAndModify: false})
+    Promise.all([model.findByIdAndDelete(id, {useFindAndModify: false}), rsvpModel.deleteMany({connection : id})])
     .then(connection =>{
         if(connection) {
             res.redirect('/connections');
@@ -105,7 +105,7 @@ exports.delete = (req, res, next)=>{
 exports.editRsvp = (req, res, next)=>{
     console.log(req.body.rsvp);
     let id = req.params.id;
-    rsvpModel.findOne({connection:id}).then(rsvp=>{
+    rsvpModel.findOne({connection:id, user:req.session.user}).then(rsvp=>{
         if(rsvp){
             //Update
             rsvpModel.findByIdAndUpdate(rsvp._id, {rsvp:req.body.rsvp}, {useFindAndModify: false, runValidators: true})
@@ -144,7 +144,7 @@ exports.editRsvp = (req, res, next)=>{
 
 exports.deleteRsvp = (req, res, next) => {
     let id = req.params.id;
-    rsvpModel.findOneAndDelete({connection: id, user: req.session.user})
+    rsvpModel.findOneAndDelete({connection: id, user:req.session.user})
     .then(rsvp => {
         req.flash("sucess", "Successfully deleted RSVP");
         res.redirect('/users/profile');

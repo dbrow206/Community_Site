@@ -16,13 +16,16 @@
     <img src="<%= connection.image %>" width="250" height="250">
     <p>Details: <br> <%= connection.details %> </p>
   
-    <% if(user == connection.author._id){ %>
+    <% if(user._id===connection.author._id){ %>
     <form>
         <button type = "submit" formmethod="GET" formaction="/connections/<%=connection.id%>/edit">Edit</button>
         <button type = "submit" formmethod="POST" formaction="/connections/<%=connection.id%>?_method=DELETE">Delete</button>
     </form>
-    <%}else if(user && user!=connection.hostName){%>
+    <%}else if(user && user!=connection.author){%>
         <form>
+            <p> <%= connection.author._id%> </p>
+            <p> <%= user%> </p>
+
 
             <h5><%=rsvps%> People Attending</h5>
   

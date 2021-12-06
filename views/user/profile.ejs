@@ -6,21 +6,22 @@
     <%if(connections.length){%>
         <p>You have created the following connections</p>
         <table>
-            <thead>
+        
             <tr>
                 <th>Connection Name </th>
                 <th>Update</th>
                 <th>Delete</th>
             </tr>
-            </thead>
+        
       
         <%connections.forEach(connection =>{ %>
-             <form>
+             <tr>
+            <form>
                 <td><%=connection.name%></td>  
                 <td><button type = "submit" formmethod="GET" formaction="/connections/<%=connection.id%>/edit">Edit</button></td>
                 <td><button type = "submit" formmethod="POST" formaction="/connections/<%=connection.id%>?_method=DELETE">Delete</button></td>
             </form>
-           
+        </tr>
         <%});
     %>
 </table>
@@ -34,10 +35,10 @@
     <table>
         
         <tr>
-            <th>Connection Name </th>
-            <th>RSVP Status</th>
-            <th>Update</th>
-            <th>Delete</th>
+            <th>Connection Name      </th>
+            <th>RSVP Status    </th>
+            <th>Update     </th>
+            <th>Delete   </th>
         </tr>
      
   
