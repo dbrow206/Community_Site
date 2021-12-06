@@ -31,8 +31,8 @@ exports.create = (req, res, next)=>{
 
 exports.show = (req, res, next)=>{
     let id = req.params.id;
-    let user= model.findById(id).populate('author', 'firstName lastName')
-    Promise.all([model.findById(id), rsvpModel.count({connection: id, rsvp:'YES'})])
+    let user= req.session.user;
+    Promise.all([model.findById(id), rsvpModel.count({connection:id, rsvp:'YES'})])
     .then(results=>{
         const [connection, rsvps] = results;
         if(connection) {         
